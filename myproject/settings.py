@@ -23,6 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # Read from the environment. The fallback is a throwaway for local development only --
 # never commit a real key, and never run with this value anywhere real.
+# NOTE: earlier commits hardcoded a starter-project key. It was never a live
+# credential -- this app runs on localhost only and has never been deployed.
 SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY',
     'django-insecure-local-development-only-do-not-use-in-production',
