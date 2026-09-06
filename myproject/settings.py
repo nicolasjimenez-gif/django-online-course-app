@@ -21,10 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'aay0j_9b&ky3a7(8m8il+-1ud(scw12@w5!+5-=gsk6ynzi0ls'
+# Read from the environment. The fallback is a throwaway for local development only --
+# never commit a real key, and never run with this value anywhere real.
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-local-development-only-do-not-use-in-production',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Off unless DJANGO_DEBUG=True is set in the environment.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 # <HINT> add your cloud host here
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
